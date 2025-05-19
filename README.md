@@ -4,7 +4,7 @@
 Perusahaan Edutech ini mengalami tingkat attrition (keluar masuk karyawan) yang cukup tinggi, melebihi angka wajar (>10%). Kondisi ini menyebabkan ketidakstabilan dalam tim, meningkatnya biaya rekrutmen dan pelatihan, serta berkurangnya produktivitas secara keseluruhan.
 
 ### Permasalahan Bisnis
-1. Tingginya angka attrition (>16%) pada karyawan.
+1. Tingginya angka attrition (>10%) pada karyawan.
 2. Tidak adanya indikator atau sistem pemantauan risiko attrition secara real-time.
 3. Belum diketahui secara pasti faktor-faktor utama penyebab karyawan keluar dari perusahaan.
 
@@ -14,10 +14,12 @@ Perusahaan Edutech ini mengalami tingkat attrition (keluar masuk karyawan) yang 
 3. Membuat dashboard interaktif di Metabase untuk membantu pengambilan keputusan.
 
 ### Persiapan
+- Dataset HR fiktif yang disesuaikan untuk kebutuhan analisis attrition. Dataset mencakup berbagai atribut seperti usia, jenis pekerjaan, tingkat kepuasan kerja, tingkat pendapatan, status lembur, dan lainnya.  
+- Data kemudian diproses melalui tahapan pembersihan, encoding, dan pembagian data untuk training dan evaluasi model.  
+Sumber data: [Database](https://github.com/dicodingacademy/dicoding_dataset/blob/main/employee/employee_data.csv)
 
-Sumber data: ....
-
-
+### Setup Environment
+Langkah-langkah persiapan environment adalah sebagai berikut:
 #### 1. Install Library yang Dibutuhkan
 ```bash
 pip install -r requirements.txt
@@ -27,7 +29,7 @@ pip install -r requirements.txt
 Menggunakan Metabase untuk pembuatan dashboard:
 ```bash
 docker pull metabase/metabase:v0.46.4
-docker run -p 3000:3000 --name metabase metabase/metabase
+docker run -d -p 3000:3000 --name metabase metabase/metabase
 ```
 Akses Metabase melalui [http://localhost:3000/setup](http://localhost:3000/setup).
 
@@ -43,21 +45,43 @@ engine = create_engine(URL)
 df.to_sql('dataset', engine)
 ```
 
+## Modeling
+Model yang digunakan untuk memprediksi risiko attrition adalah Random Forest Classifier, karena kemampuannya menangani fitur kategorikal dan numerik secara bersamaan serta memberikan interpretasi lewat feature importance.
+### Evaluasi Model
+* Akurasi: 0.87
+* Precision dan Recall seimbang
+* Confusion matrix menunjukkan model mampu mendeteksi karyawan yang berisiko keluar dengan cukup baik.
+    ![Image](https://github.com/user-attachments/assets/b47ca74d-d7fb-4d09-b6fc-d6d19d710222)
+  
+### Faktor Penting Penyebab Attrition
+Berdasarkan feature importance dari Random Forest, faktor-faktor dominan penyebab attrition antara lain:  
+* OverTime (lembur)
+* JobSatisfaction
+* MonthlyIncome
+* JobLevel
+* YearsAtCompany
+  
 ## Business Dashboard
 Dashboard dibangun menggunakan Metabase, dengan data yang terhubung melalui Supabase PostgreSQL. Dashboard ini menyajikan:
-
+![Image](https://github.com/user-attachments/assets/533c12e9-bc56-4825-b8b5-81c3a2b05680)
 * Ringkasan total karyawan, attrition rate, dan overtime.
 * Visualisasi faktor penyebab attrition (OverTime, JobLevel, dll).
 * Distribusi attrition berdasarkan Department dan JobRole.
 * Tabel karyawan berisiko tinggi berdasarkan hasil model prediksi.  
 
-Akses Dashboard: 
-## Conclusion
-Hasil analisis menunjukkan bahwa attrition di perusahaan didorong oleh faktor-faktor seperti OverTime, rendahnya Job Satisfaction, dan tingkat pendapatan. Model Random Forest digunakan untuk memprediksi risiko attrition dan memberikan feature importance.
+**Akses Dashboard melalui akun metabase:**  
+Username : rosalia03rrrbkl@gmail.com  
+Password : metabaserosa01 
 
-Dashboard interaktif di Metabase kini dapat digunakan oleh tim HR untuk memantau kondisi tenaga kerja dan melakukan intervensi lebih awal terhadap karyawan yang berisiko.
+## Conclusion
+Proyek ini berhasil mengidentifikasi faktor-faktor utama penyebab attrition dan membangun sistem pendukung keputusan berbasis data. Model prediksi yang dibangun menggunakan **Random Forest** memberikan hasil akurat dan dapat diandalkan untuk memantau risiko keluar karyawan.
+
+Dashboard yang dibangun memungkinkan tim HR untuk:
+* Melihat overview kondisi attrition secara real-time
+* Mengidentifikasi karyawan berisiko tinggi
+* Mengambil tindakan intervensi lebih awa
 
 ### Rekomendasi Action Items (Optional)
-* Mengurangi beban lembur terutama pada divisi dengan attrition tinggi.
-* Meningkatkan engagement dan kepuasan kerja di level jabatan rendah.
+* **Mengurangi beban lembur** terutama pada divisi dengan attrition tinggi.
+* Meningkatkan **engagement dan kepuasan kerja** di level jabatan rendah.
 * Menggunakan dashboard Metabase secara berkala untuk memantau risiko keluar karyawan.

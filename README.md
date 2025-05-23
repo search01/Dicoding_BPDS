@@ -94,7 +94,7 @@ Untuk menjalankan prototype sistem machine learning secara lokal:
 streamlit run app.py
 ```
 Jika prototype sudah di-deploy di Streamlit Community, Anda dapat mengaksesnya melalui link berikut:
-- [Link Prototype Streamlit](https://proyek-akhir-at3ow6z7f4xxp8v4zxsjlr.streamlit.app/)
+- [Link Prototype Streamlit](https://sub1bpds-ofmzv7wgsysss7fbxvywec.streamlit.app/)
   
 ## Conclusion
 Proyek ini berhasil mengidentifikasi faktor-faktor utama penyebab attrition dan membangun sistem pendukung keputusan berbasis data. Model prediksi yang dibangun menggunakan **Random Forest** memberikan hasil akurat dan dapat diandalkan untuk memantau risiko keluar karyawan.

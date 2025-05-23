@@ -16,28 +16,28 @@ Perusahaan Edutech ini mengalami tingkat attrition (keluar masuk karyawan) yang 
 ### Persiapan
 #### Sumber Dataset
 Dataset mencakup berbagai atribut seperti:  
-     * usia
-     * jenis pekerjaan
-     * tingkat kepuasan kerja
-     * tingkat pendapatan
-     * status lembur 
+* usia
+* jenis pekerjaan
+* tingkat kepuasan kerja
+* tingkat pendapatan
+* status lembur    
 Data kemudian diproses melalui tahapan pembersihan, encoding, dan pembagian data untuk training dan evaluasi model.  
 **Sumber data:** [Database](https://github.com/dicodingacademy/dicoding_dataset/blob/main/employee/employee_data.csv)
 
 ### Setup Environment
 Langkah-langkah persiapan environment adalah sebagai berikut:
 #### 1. Buat Environment Python
-'''bash
+```bash
 conda create --name bpds_sub1 python=3.9.15 -y
 conda activate bpds_sub1
-'''
+```
 
 #### 2. Install Library yang Dibutuhkan
 ```bash
 pip install -r requirements.txt
 ```
 
-#### 2. Setup Metabase
+#### 3. Setup Metabase
 Menggunakan Metabase untuk pembuatan dashboard:
 ```bash
 docker pull metabase/metabase:v0.46.4
@@ -45,7 +45,7 @@ docker run -d -p 3000:3000 --name metabase metabase/metabase
 ```
 Akses Metabase melalui [http://localhost:3000/setup](http://localhost:3000/setup).
 
-#### 3. Setup Database Supabase
+#### 4. Setup Database Supabase
 - Buat akun di [Supabase](https://supabase.com/dashboard/sign-in).
 - Buat project baru dan salin URI database.
 - Kirim dataset ke database menggunakan SQLAlchemy:
@@ -63,7 +63,7 @@ Model yang digunakan untuk memprediksi risiko attrition adalah Random Forest Cla
 * Akurasi: 0.87
 * Precision dan Recall seimbang
 * Confusion matrix menunjukkan model mampu mendeteksi karyawan yang berisiko keluar dengan cukup baik.
-    ![Image](https://github.com/user-attachments/assets/b47ca74d-d7fb-4d09-b6fc-d6d19d710222)
+    ![Image](https://github.com/user-attachments/assets/2c48243d-6cdf-4713-b658-e8f545793425)
   
 ### Faktor Penting Penyebab Attrition
 Berdasarkan feature importance dari Random Forest, faktor-faktor dominan penyebab attrition antara lain:  
@@ -86,16 +86,24 @@ Username : rosalia03rrrbkl@gmail.com
 Password : metabaserosa01 
 
 ## Menjalankan Sistem Machine Learning
-Sistem machine learning yang dikembangkan berfungsi untuk memprediksi risiko dropout siswa berdasarkan faktor-faktor yang tersedia dalam dataset.
-
-### Cara Menjalankan Prototype Machine Learning
-Untuk menjalankan prototype sistem machine learning secara lokal:
+### Menjalankan Sistem Machine Learning Secara Lokal
+1. Pastikan Anda sudah memiliki file berikut di direktori kerja:
+   - `app.py` (kode aplikasi Streamlit)
+   - `model.pkl` atau `model.joblib` (model machine learning yang sudah dilatih)
+   - `scaler.pkl` (scaler yang digunakan untuk preprocessing fitur)
+   - `features.txt` (daftar nama fitur yang digunakan model)
+2. Jalankan aplikasi Streamlit:
 ```bash
 streamlit run app.py
 ```
-Jika prototype sudah di-deploy di Streamlit Community, Anda dapat mengaksesnya melalui link berikut:
+### Menjalankan Prototype Machine Learning yang sudah dideploy
+Jika prototype sudah di-deploy di Streamlit Community, dapat mengaksesnya melalui link berikut:
 - [Link Prototype Streamlit](https://sub1bpds-ofmzv7wgsysss7fbxvywec.streamlit.app/)
-  
+
+### Cara Menggunakan Aplikasi
+* Jika ingin mencoba prediksi dengan data lokal, siapkan file CSV dengan format fitur yang sesuai (misal: `data_prediction.csv`, ada dalam file project).  
+* Upload data dengan mengunggah file CSV secara langsung untuk melakukan prediksi. Hasil prediksi akan ditampilkan dalam tabel, termasuk nilai probabilitas risiko dropout.
+
 ## Conclusion
 Proyek ini berhasil mengidentifikasi faktor-faktor utama penyebab attrition dan membangun sistem pendukung keputusan berbasis data. Model prediksi yang dibangun menggunakan **Random Forest** memberikan hasil akurat dan dapat diandalkan untuk memantau risiko keluar karyawan.
 

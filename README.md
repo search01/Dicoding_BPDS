@@ -75,7 +75,7 @@ Berdasarkan feature importance dari Random Forest, faktor-faktor dominan penyeba
   
 ## Business Dashboard
 Dashboard dibangun menggunakan Metabase, dengan data yang terhubung melalui Supabase PostgreSQL. Dashboard ini menyajikan:
-![Image](https://github.com/user-attachments/assets/533c12e9-bc56-4825-b8b5-81c3a2b05680)
+![Image](https://github.com/user-attachments/assets/777bcf59-6dff-4f84-bfc0-65152847d74b)
 * Ringkasan total karyawan, attrition rate, dan overtime.
 * Visualisasi faktor penyebab attrition (OverTime, JobLevel, dll).
 * Distribusi attrition berdasarkan Department dan JobRole.

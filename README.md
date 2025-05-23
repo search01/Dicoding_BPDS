@@ -79,7 +79,6 @@ Dashboard dibangun menggunakan Metabase, dengan data yang terhubung melalui Supa
 * Ringkasan total karyawan, attrition rate, dan overtime.
 * Visualisasi faktor penyebab attrition (OverTime, JobLevel, dll).
 * Distribusi attrition berdasarkan Department dan JobRole.
-* Tabel karyawan berisiko tinggi berdasarkan hasil model prediksi.  
 
 **Akses Dashboard melalui akun metabase:**  
 Username : rosalia03rrrbkl@gmail.com  
@@ -110,7 +109,7 @@ Proyek ini berhasil mengidentifikasi faktor-faktor utama penyebab attrition dan 
 Dashboard yang dibangun memungkinkan tim HR untuk:
 * Melihat overview kondisi attrition secara real-time
 * Mengidentifikasi karyawan berisiko tinggi
-* Mengambil tindakan intervensi lebih awa
+* Mengambil tindakan intervensi lebih awal
 
 ### Rekomendasi Action Items (Optional)
 * **Mengurangi beban lembur** terutama pada divisi dengan attrition tinggi.

@@ -14,13 +14,25 @@ Perusahaan Edutech ini mengalami tingkat attrition (keluar masuk karyawan) yang 
 3. Membuat dashboard interaktif di Metabase untuk membantu pengambilan keputusan.
 
 ### Persiapan
-- Dataset HR fiktif yang disesuaikan untuk kebutuhan analisis attrition. Dataset mencakup berbagai atribut seperti usia, jenis pekerjaan, tingkat kepuasan kerja, tingkat pendapatan, status lembur, dan lainnya.  
-- Data kemudian diproses melalui tahapan pembersihan, encoding, dan pembagian data untuk training dan evaluasi model.  
-Sumber data: [Database](https://github.com/dicodingacademy/dicoding_dataset/blob/main/employee/employee_data.csv)
+#### Sumber Dataset
+Dataset mencakup berbagai atribut seperti:  
+     * usia
+     * jenis pekerjaan
+     * tingkat kepuasan kerja
+     * tingkat pendapatan
+     * status lembur 
+Data kemudian diproses melalui tahapan pembersihan, encoding, dan pembagian data untuk training dan evaluasi model.  
+**Sumber data:** [Database](https://github.com/dicodingacademy/dicoding_dataset/blob/main/employee/employee_data.csv)
 
 ### Setup Environment
 Langkah-langkah persiapan environment adalah sebagai berikut:
-#### 1. Install Library yang Dibutuhkan
+#### 1. Buat Environment Python
+'''bash
+conda create --name bpds_sub1 python=3.9.15 -y
+conda activate bpds_sub1
+'''
+
+#### 2. Install Library yang Dibutuhkan
 ```bash
 pip install -r requirements.txt
 ```
@@ -73,6 +85,17 @@ Dashboard dibangun menggunakan Metabase, dengan data yang terhubung melalui Supa
 Username : rosalia03rrrbkl@gmail.com  
 Password : metabaserosa01 
 
+## Menjalankan Sistem Machine Learning
+Sistem machine learning yang dikembangkan berfungsi untuk memprediksi risiko dropout siswa berdasarkan faktor-faktor yang tersedia dalam dataset.
+
+### Cara Menjalankan Prototype Machine Learning
+Untuk menjalankan prototype sistem machine learning secara lokal:
+```bash
+streamlit run app.py
+```
+Jika prototype sudah di-deploy di Streamlit Community, Anda dapat mengaksesnya melalui link berikut:
+- [Link Prototype Streamlit](https://proyek-akhir-at3ow6z7f4xxp8v4zxsjlr.streamlit.app/)
+  
 ## Conclusion
 Proyek ini berhasil mengidentifikasi faktor-faktor utama penyebab attrition dan membangun sistem pendukung keputusan berbasis data. Model prediksi yang dibangun menggunakan **Random Forest** memberikan hasil akurat dan dapat diandalkan untuk memantau risiko keluar karyawan.
 
